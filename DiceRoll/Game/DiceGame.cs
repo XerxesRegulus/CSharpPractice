@@ -4,7 +4,7 @@ namespace DiceRoll.Game
 {
   public class DiceGame(Dice dice)
   {
-    private Dice _dice = dice;
+    private readonly Dice _dice = dice;
     private int attempts;
     private InputValidator _inputValidator = new InputValidator();
     private Guess _guess = new Guess();
