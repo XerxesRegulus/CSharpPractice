@@ -6,7 +6,7 @@ public class Dice
 
   public int Roll()
   {
-    Number = new Random().Next(1, 6);
+    Number = new Random().Next(1, 7);
     return Number;
   }
 }
