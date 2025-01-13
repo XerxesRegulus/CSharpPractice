@@ -86,8 +86,8 @@ List<string> RemoveToDo(List<string> toDoList)
   bool isParsable = false;
   do
   {
-    string userInput = Console.ReadLine();
     Console.WriteLine("Please select the index of the todo");
+    string userInput = Console.ReadLine();
     if (userInput.Length == 0)
     {
       Console.WriteLine("Selected index cannot be empty");
