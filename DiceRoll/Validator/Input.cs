@@ -22,12 +22,6 @@ public class Input
     return true;
   }
 
-  public string ValidationError()
-  {
-    
-    return "";
-  }
-
   private bool isInRange(int guessNumber)
   {
     return (guessNumber is > 0 and <= 6);
