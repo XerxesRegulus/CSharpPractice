@@ -13,18 +13,8 @@ public class Input
       return false;
     }
 
-    if (!isInRange(guessNumber))
-    {
-      ErrorMessage = "Input is not in acceptable range";
-      return false;
-    }
-
     return true;
   }
 
-  private bool isInRange(int guessNumber)
-  {
-    return (guessNumber is > 0 and <= 6);
-  }
 }
 
