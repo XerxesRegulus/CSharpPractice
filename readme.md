@@ -1,4 +1,4 @@
-This is a collection concsole apps under one solution to practice c# while I am learning it.
+This is a collection console apps under one solution to practice c# while I am learning it.
 
 ### Calc
 
