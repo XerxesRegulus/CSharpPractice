@@ -1,6 +1,7 @@
-﻿namespace DiceRoll.Validator;
+﻿using DiceRoll.Helpers;
 
-public class Guess
+namespace DiceRoll.Validator;
+public class GuessAmount
 {
-  public bool isAllowed(int numberOfRetries, int allowedRetries) => numberOfRetries <= allowedRetries;
+  public bool isAllowed(int numberOfRetries) => numberOfRetries < GuessHelpers.allowedRetries;
 }
