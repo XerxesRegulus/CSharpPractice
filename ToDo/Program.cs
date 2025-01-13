@@ -129,11 +129,5 @@ bool isRemoveInputValid(string userInput, List<string> toDoList, out int offsetI
   return true;
 }
 
-bool IndexInRange(List<string> toDoList, int index)
-{
-  return (0 <= index && index < toDoList.Count);
-}
-bool IsToDoEmpty(List<string> toDoList)
-{
-  return toDoList.Count == 0;
-}
+bool IndexInRange(List<string> toDoList, int index) => (0 <= index && index < toDoList.Count);
+bool IsToDoEmpty(List<string> toDoList) => toDoList.Count == 0;
