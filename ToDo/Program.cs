@@ -83,41 +83,50 @@ List<string> RemoveToDo(List<string> toDoList)
     return toDoList;
   }
 
-  bool isParsable = false;
+  bool isInputValid = false;
   do
   {
     Console.WriteLine("Please select the index of the todo");
     string userInput = Console.ReadLine();
-    if (userInput.Length == 0)
-    {
-      Console.WriteLine("Selected index cannot be empty");
-      continue;
-    }
 
-    isParsable = int.TryParse(userInput, out int removeIndex);
-    if (isParsable)
+    isInputValid = isRemoveInputValid(userInput, toDoList, out int offsetIndex);
+    if (isInputValid)
     {
-      int offsetIndex = removeIndex - 1;
-      if (!IndexInRange(toDoList, offsetIndex))
-      {
-        Console.WriteLine("Index is out of range");
-        isParsable = false;
-        continue;
-      }
-     
       string toDo = toDoList[offsetIndex];
       Console.WriteLine($"Removing {toDo}");
       toDoList.RemoveAt(offsetIndex);
       Console.WriteLine($"TODO removed: {toDo}");
     }
-    else
-    {
-      Console.WriteLine("Index is non parsable");
-    }
 
-  } while (!isParsable);
+  } while (!isInputValid);
 
   return toDoList;
+}
+
+bool isRemoveInputValid(string userInput, List<string> toDoList, out int offsetIndex)
+{
+  offsetIndex = 0;
+  if (userInput.Length == 0)
+  {
+    Console.WriteLine("Selected index cannot be empty");
+    return false;
+  }
+
+  bool inputParsable = int.TryParse(userInput, out int removeIndex);
+  if (!inputParsable)
+  {
+    Console.WriteLine("Provided input is non parsable");
+    return false;
+  }
+
+  offsetIndex = removeIndex - 1;
+  if(!IndexInRange(toDoList, offsetIndex))
+  {
+    Console.WriteLine("Selected index is out of range");
+    return false;
+  }
+
+  return true;
 }
 
 bool IndexInRange(List<string> toDoList, int index)
