@@ -1,9 +1,9 @@
 ﻿namespace DiceRoll.Validator;
 
-public class Input
+public class InputValidator
 {
   public string ErrorMessage { get; private set; }
-  public bool isValid(string input, out int guessNumber)
+  public bool IsValid(string input, out int guessNumber)
   {
     bool parsable = int.TryParse(input, out guessNumber);
 
