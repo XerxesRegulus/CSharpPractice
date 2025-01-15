@@ -37,10 +37,18 @@ public class RecipeBuilder
       SelectedIngredientIDs.Add(offsetSelectedIngredient);
     } while (validInput);
 
-    RecipeFileWriter writer = new RecipeFileWriter(Format);
+    if (SelectedIngredientIDs.Count < 1)
+    {
+      Console.WriteLine("No Ingredients Selected, Recipe not saved");
+    }
+    else
+    {
+      RecipeFileWriter writer = new RecipeFileWriter(Format);
 
-    writer.Write(SelectedIngredientIDs);
-    Console.WriteLine("IDs written down");
+      writer.Write(SelectedIngredientIDs);
+      Console.WriteLine("IDs written down");
+
+    }
   }
 
 }
