@@ -1,5 +1,5 @@
 ﻿namespace CookieCookbook.Ingredients;
-public class Cinnamon: Ingredient
+public class Cinnamon : Ingredient
 {
   public override int ID { get { return 7; } }
   public override string Name { get { return "Butter"; } }

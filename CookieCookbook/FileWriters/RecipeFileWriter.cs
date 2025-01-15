@@ -14,7 +14,7 @@ public class RecipeFileWriter
 
   public void Write(List<int> ingredientIDs)
   {
-    if(Format == FileFormat.Json)
+    if (Format == FileFormat.Json)
     {
       Console.WriteLine("not yet implemented");
     }
@@ -32,13 +32,13 @@ public class RecipeFileWriter
   private void WriteAsTxt(List<int> ingredientIDs)
   {
     StreamWriter writer = File.AppendText(FileName);
-    string convertedIDs= String.Join(',' , ingredientIDs.ToArray());
+    string convertedIDs = String.Join(',', ingredientIDs.ToArray());
     writer.WriteLine(convertedIDs);
     writer.Close();
   }
 
   private void initializeJSONFile()
   {
-    
+
   }
 }

@@ -5,13 +5,18 @@ using CookieCookbook.Printers;
 using CookieCookbook.Validators;
 
 namespace CookieCookbook;
-
-internal class RecipeBuilder
+public class RecipeBuilder
 {
   private readonly List<Ingredient> ingredients = IngredientList.All();
 
   private List<int> SelectedIngredientIDs = new List<int>();
-  const FileFormat format = FileFormat.Txt;
+  private FileFormat Format { get; init; }
+
+  public RecipeBuilder(FileFormat format)
+  {
+    Format = format;
+  }
+
   public void Build()
   {
     Console.WriteLine("Create a new cookie recipe! Available Ingredients are: \n");
@@ -32,7 +37,7 @@ internal class RecipeBuilder
       SelectedIngredientIDs.Add(offsetSelectedIngredient);
     } while (validInput);
 
-    RecipeFileWriter writer = new RecipeFileWriter(format);
+    RecipeFileWriter writer = new RecipeFileWriter(Format);
 
     writer.Write(SelectedIngredientIDs);
     Console.WriteLine("IDs written down");
