@@ -1,4 +1,6 @@
-﻿using CookieCookbook.Fixtures;
+﻿using CookieCookbook.Enums;
+using CookieCookbook.FileWriters;
+using CookieCookbook.Fixtures;
 using CookieCookbook.Printers;
 using CookieCookbook.Validators;
 
@@ -9,6 +11,7 @@ internal class RecipeBuilder
   private readonly List<Ingredient> ingredients = IngredientList.All();
 
   private List<int> SelectedIngredientIDs = new List<int>();
+  const FileFormat format = FileFormat.Txt;
   public void Build()
   {
     Console.WriteLine("Create a new cookie recipe! Available Ingredients are: \n");
@@ -28,10 +31,11 @@ internal class RecipeBuilder
 
       SelectedIngredientIDs.Add(offsetSelectedIngredient);
     } while (validInput);
+
+    RecipeFileWriter writer = new RecipeFileWriter(format);
+
+    writer.Write(SelectedIngredientIDs);
+    Console.WriteLine("IDs written down");
   }
 
-  private void WriteToFile()
-  {
-
-  }
 }

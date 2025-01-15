@@ -13,6 +13,5 @@
     public static void InRecipe(List<Ingredient> ingredients)
     {
     }
-
   }
 }
