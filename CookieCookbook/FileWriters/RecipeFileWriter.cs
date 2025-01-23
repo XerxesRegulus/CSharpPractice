@@ -1,4 +1,7 @@
 ﻿using CookieCookbook.Enums;
+using CookieCookbook.Readers;
+using System.Text.Json;
+using System.Text.Json.Nodes;
 
 namespace CookieCookbook.FileWriters;
 
@@ -14,19 +17,27 @@ public class RecipeFileWriter
 
   public void Write(List<int> ingredientIDs)
   {
-    if (Format == FileFormat.Json)
+    switch(Format)
     {
-      Console.WriteLine("not yet implemented");
-    }
-    else
-    {
-      WriteAsTxt(ingredientIDs);
+      case FileFormat.Json:
+        WriteAsJSON(ingredientIDs);
+        break;
+      case FileFormat.Txt:
+        WriteAsTxt(ingredientIDs);
+        break;
+      default:
+        Console.WriteLine("Format not implemented");
+        break;
     }
   }
 
   private void WriteAsJSON(List<int> ingredientIDs)
   {
+    List<string> existingData = RecipeJsonDeserializer.Data(FileName);
+    existingData.Add(String.Join(",", ingredientIDs));
 
+    string jsonString = JsonSerializer.Serialize(existingData);
+    File.WriteAllText(FileName, jsonString);
   }
 
   private void WriteAsTxt(List<int> ingredientIDs)
@@ -36,9 +47,5 @@ public class RecipeFileWriter
     writer.WriteLine(convertedIDs);
     writer.Close();
   }
-
-  private void initializeJSONFile()
-  {
-
-  }
 }
+

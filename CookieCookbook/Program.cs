@@ -1,7 +1,7 @@
 ﻿using CookieCookbook;
 using CookieCookbook.Enums;
 
-const FileFormat format = FileFormat.Txt;
+const FileFormat format = FileFormat.Json;
 // Read file if has ingredients print em
 RecipePrinter recipePrinter = new RecipePrinter(format);
 recipePrinter.Print();

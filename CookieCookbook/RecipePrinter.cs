@@ -1,5 +1,6 @@
 ﻿using CookieCookbook.Enums;
 using CookieCookbook.Fixtures;
+using CookieCookbook.Readers;
 
 namespace CookieCookbook;
 
@@ -18,7 +19,7 @@ public class RecipePrinter
     switch (Format)
     {
       case FileFormat.Json:
-        Console.WriteLine("Not Implemented");
+        PrintJson();
         break;
       case FileFormat.Txt:
         PrintTxt();
@@ -27,6 +28,13 @@ public class RecipePrinter
         Console.WriteLine("Not Implemented");
         break;
     }
+  }
+
+  private void PrintJson()
+  {
+    //List<List<int>> ingredientIDs = RecipeJsonDeserializer.Data(FileName);
+
+    Console.WriteLine("YAY");
   }
 
   private void PrintTxt()

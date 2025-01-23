@@ -47,7 +47,6 @@ public class RecipeBuilder
 
       writer.Write(SelectedIngredientIDs);
       Console.WriteLine("IDs written down");
-
     }
   }
 
