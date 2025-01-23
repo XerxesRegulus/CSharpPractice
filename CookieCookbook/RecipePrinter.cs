@@ -32,9 +32,8 @@ public class RecipePrinter
 
   private void PrintJson()
   {
-    //List<List<int>> ingredientIDs = RecipeJsonDeserializer.Data(FileName);
-
-    Console.WriteLine("YAY");
+    List<string> recipes = RecipeJsonDeserializer.Data(FileName);
+    PrintIngredients(recipes.ToArray());
   }
 
   private void PrintTxt()
@@ -42,6 +41,13 @@ public class RecipePrinter
     StreamReader reader = new StreamReader(FileName);
     string fileText = reader.ReadToEnd();
     string[] recipeIDs = fileText.Split(Environment.NewLine, StringSplitOptions.RemoveEmptyEntries);
+    PrintIngredients(recipeIDs);
+    reader.Close();
+  }
+
+  private void PrintIngredients(string[] recipeIDs)
+  {
+    if (recipeIDs.Length == 0) return;
 
     for (int i = 0; i < recipeIDs.Length; i++)
     {
@@ -56,7 +62,5 @@ public class RecipePrinter
       }
       Console.WriteLine("");
     }
-
-    reader.Close();
   }
 }
